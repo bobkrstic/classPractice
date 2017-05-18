@@ -1,0 +1,14 @@
+/** 
+	* Static: Default Positioning;
+	** one below another
+**/
+
+.box-set {
+	background: #eaeaed;
+}
+
+.box {
+	background: #2db34a;
+	height: 80px;
+	width: 80px;
+}

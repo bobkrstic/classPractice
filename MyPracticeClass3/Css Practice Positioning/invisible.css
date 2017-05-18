@@ -1,0 +1,35 @@
+
+/** Hiding the element without deleting it
+	** the web page will not display it, like it is not there
+
+	**** ANOTHER PROPERTY IS "VISIBILITY HIDDEN" IN THIS CASE
+	**** IT WILL TAKE SAME AMOUNT OF SPACE THAT IS AS IF IT IS VISSIBLE
+	**** BIT WILL NOT BE THERE
+
+	** WITH THE DISPLAY NONE, IT IS LIKE IT DOES NOT EXIST
+**/
+
+.box-set {
+	background: #eaeaed;
+}
+
+.box {
+	background: #2db34a;
+	height: 80px;
+	position: relative; 
+	width: 80px;
+}
+
+.box-1 {
+	top: 20px;
+	display: none;
+}
+
+.box-2 {
+	left: 40px;
+}
+
+.box-3 {
+	bottom: -10px;
+	right: 20px;
+}

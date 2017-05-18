@@ -1,0 +1,12 @@
+body {
+
+	background: lightblue;
+}
+
+
+
+.col-md-6 {
+	background-color: white;
+	padding: 20px;
+	width: 50%;
+}

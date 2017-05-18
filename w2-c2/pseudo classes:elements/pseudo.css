@@ -1,0 +1,13 @@
+#one:hover  {
+	color: orange;
+}
+
+
+#two:focus {
+	color: green;
+}
+
+#three:active {
+	color: yellow;
+}
+

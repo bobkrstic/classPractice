@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock Paper Scissors</title>
+</head>
+<body>
+
+	<h1>Rock Paper Scissors</h1>
+
+	<h3>Wins:</h3>
+	<h3>Losses</h3>
+	<h3>Ties:</h3>j
+
+
+
+<script type="text/javascript">
+	
+	document.onkeyup = function(event) {
+          var elem = document.getElementById(“winCounter”);
+          var cg = Math.floor((Math.random() * 3));
+          console.log(cg);
+          var pg;
+          if (event.key = “p”) {
+              pg = 1;
+          } else if (event.key = “s”) {
+              pg = 2;
+          } else if (event.key = “r”) {
+              pg = 0;
+          } 
+
+          elem.innerHTML = cg;
+          
+        
+        // function myFunction() {
+        //    var x = Math.floor((Math.random() * 3));
+        //    console.log(x);
+        //    document.getElementById(“demo”).innerHTML = x;
+        // }
+        pg = pg.toString();
+        cg = cg.toString();
+        var combine = pg + cg;
+        var options = [“r”, “p”, “s”];
+        // var win = [“10”,“21",“02”];
+        var tie = 0;
+        var win = 0;
+        var lose = 0;
+        if (pg === cg){
+            tie += 1;
+        }
+
+        else if (combine === "10" || combine === "21" || combine === "02") {
+            win += 1;
+        }
+
+        else {
+
+            lose += 1;
+
+        }
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

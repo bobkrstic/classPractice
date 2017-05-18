@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock Paper Scissors</title>
+</head>
+<body>
+
+	<div id="game">
+		<p>Press r, p or s to start playing</p>
+	</div>
+
+<!-- // i need the user to make a choice
+// computer to make a choice
+// capture choices
+// compare these choices, and determine a win, loss or tie
+// display the result to the user -->
+
+<script type="text/javascript">
+
+	// array of options for the computer
+	var options = ["r", "p", "s"];
+	var wins = 0;
+	var losses = 0;
+	var ties = 0;
+	
+	document.onkeyup = function () {
+		// alert("working"); // capturing when the button/key is released
+		// now capture what the user is actually pressing
+		// so here takes the key-pressed and turns it into a string and to lower case
+		var userguess = String.fromCharCode(event.keyCode).toLowerCase();
+
+		console.log(userguess + " user guess");
+
+
+		var computerGuess = options[Math.floor(Math.random()*options.length)];
+
+		console.log(computerGuess + " computer guess");
+
+		
+
+
+		// if (userguess == "r" || userguess == "p" || userguess == "s") {
+		// 	alert("chosen correctly!");
+		// } else {
+		// 	alert("Please choose r, p or s");
+		// }
+
+
+		if (userguess == "r" || userguess == "p" || userguess == "s") {
+		
+			if ((userguess == "r") && (computerGuess == "s")) {
+				console.log("You win!");
+				wins++;
+				alert("Wins: " + wins);
+			}
+			if ((userguess == "r") && (computerGuess == "p")) {
+				console.log("You lose!");
+				losses++;
+				alert("Losses: " + losses);
+			}
+			if ((userguess == "s") && (computerGuess == "p")) {
+				console.log("You win!");
+				wins++;
+				alert("Wins: " + wins);
+			}
+			if ((userguess == "s") && (computerGuess == "r")) {
+				console.log("You lose!");
+				losses++;
+				alert("Losses: " + losses);
+			}
+			if ((userguess == "p") && (computerGuess == "s")) {
+				console.log("You lose!");
+				losses++;
+				alert("Losses: " + losses);
+			}
+			if ((userguess == "p") && (computerGuess == "r")) {
+				console.log("You win!");
+				wins++;
+				alert("Wins: " + wins);
+			}
+			if ((userguess == computerGuess)) {
+				console.log("You tie!");
+					ties++;
+				alert("Ties: " + ties);
+			}
+
+		} else {
+			alert("Please choose r, p or s");
+			console.log("Please choose r, p or s");
+		}
+
+			console.log("---------------------");
+
+
+			var html = "<p>Press r, p, or s to start playing</p>" +
+			"<p>wins: " + wins + "</p>" +
+			"<p>losses: " + losses + "</p>" +
+			"<p>ties: " + ties + "</p>";
+
+			// insert now when user presses the key. 
+
+			document.querySelector('#game').innerHTML = html;
+
+
+	}
+
+
+</script>
+
+
+</body>
+</html>

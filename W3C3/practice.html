@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Favorite TV Shows</title>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+
+      // declare an array and variable tvShow
+      var favTVshows = [];
+      var tvShow;
+
+      // For Loop Elements Repeats ??? Times
+      // var here starts at one. want to ask the user 1st show, doesn't make sense
+      // to ask what is your 0 show. 
+      for (var i = 1; i < 4; i++) {
+
+        // prompth the user to type in the information of the tv show
+        tvShow = prompt("What's your #" + i + " favorite TV show?");
+
+        // push the info to the array, push the value of the tvshow to the array
+        favTVshows.push(tvShow);
+      }
+
+      // keep going through the array and print all the elements. 
+      // i doesn't need to be redefined use the same i
+      // but u can use some other variable like var j = 0; 
+      for (i = 0; i < favTVshows.length; i++) {
+
+        // print on the screen element of the array with the element number i
+        alert(favTVshows[i]);
+      }
+
+    </script>
+
+  </body>

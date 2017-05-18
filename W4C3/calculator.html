@@ -1,0 +1,212 @@
+<!-- // assign the value to every key
+// get the on click event and check the value of the pressed key
+// if the value is the primary number, store it in the variable, 
+// if is the numeric then return its value and then store it in the variable. 
+// if the value is the operator then store it in the variable on its own
+// everytime key is pressed append the array with the clicket number
+
+// when the operator is pressed the cursor goes to the line below
+
+// waiting for the operator sign input
+// if the operator is clicked twice or three times, the browser register only the latest
+
+// start typing the second number
+// the cursor goes to the next line
+
+// same function called, to test if the number is number, and append to the array. 
+// 
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Calculator</title>
+
+    <!-- Added link to the jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+</head>
+<body>
+
+<!-- Jumbotron for Title -->
+<div class="jumbotron">
+    <h1 class="text-center">jQuery Calculator</h1>
+    <h3 class="text-center">Perform basic mathematic operations using the power of jQuery!</h3>
+</div>
+
+<div class="container">
+
+    <div class="row">
+
+        <!-- Calculator Panel -->
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Calculator</h3>
+                </div>
+
+                <div class="panel-body">
+                    <button id="button-1" class="btn btn-primary number" value="1"><h1>1</h1></button>
+                    <button id="button-2" class="btn btn-primary number" value="2"><h1>2</h1></button>
+                    <button id="button-3" class="btn btn-primary number" value="3"><h1>3</h1></button>
+                    <button id="button-plus" class="btn btn-danger operator" value="plus"><h1>+</h1></button>
+                    <br><br>
+                    <button id="button-4" class="btn btn-primary number" value="4"><h1>4</h1></button>
+                    <button id="button-5" class="btn btn-primary number" value="5"><h1>5</h1></button>
+                    <button id="button-6" class="btn btn-primary number" value="6"><h1>6</h1></button>
+                    <button id="button-minus" class="btn btn-danger operator" value="minus"><h1>&minus;</h1></button>
+                    <br><br>
+                    <button id="button-7" class="btn btn-primary number" value="7"><h1>7</h1></button>
+                    <button id="button-8" class="btn btn-primary number" value="8"><h1>8</h1></button>
+                    <button id="button-9" class="btn btn-primary number" value="9"><h1>9</h1></button>
+                    <button id="button-multiply" class="btn btn-danger operator" value="times"><h1>&times;</h1></button>
+                    <br><br>
+                    <button id="button-0" class="btn btn-primary number" value="0"><h1>0</h1></button>
+                    <button id="button-divide" class="btn btn-danger operator" value="divide"><h1>&divide;</h1></button>
+                    <button id="button-power" class="btn btn-danger operator" value="power"><h1>^</h1></button>
+                    <button id="button-equal" class="btn btn-success equal" value="equals"><h1>=</h1></button>
+                    <br><br>
+                    <button id="button-clear" class="btn btn-default clear" value="clear"><h1>clear</h1></button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Result Panel -->
+        <div class="col-lg-6">
+        <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Result</h3>
+                </div>
+                <div class="panel-body">
+                    <h1 id="first-number"></h1>
+                    <h1 id="operator"></h1>
+                    <h1 id="second-number"></h1>
+                    <hr>
+                    <h1 id="result"></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+    // var numbersArray = [];
+
+    // variable declartaions
+    var first = "";
+    var second = "";
+    var operator = null;
+    var result = null;
+
+
+    //collect on click event
+    $(".btn").on("click", function(){
+
+        
+        var click = this.value;
+
+        console.log(click);
+
+        if (result != null){
+            return
+        }
+
+        // check if click is numerical
+        if ($(this).hasClass('number')){
+
+            //check if we're on first 
+
+            if (operator === null){
+                first += click;
+                $("#first-number").html(first);
+
+            }
+            else{
+                second += click;
+                $("#second-number").html(second);
+
+            }
+            
+        }
+
+        else if ($(this).hasClass('operator')){
+
+            // console.log("hello")
+
+            if (first === ""){
+                return;
+            }
+
+            if (click === "plus"){
+                operator = "+";
+                $("#operator").html(operator);
+            }
+
+            else if (click === "minus"){
+                operator = "-";
+                $("#operator").html(operator);
+            }
+
+            else if (click === "times"){
+                operator = "x";
+                $("#operator").html(operator);
+            }
+
+            else if (click === "divide"){
+                operator = "/";
+                $("#operator").html(operator);
+            }
+
+            else if (click === "power"){
+                operator = "^";
+                $("#operator").html(operator);
+            }
+        }
+
+        else if ($(this).hasClass('clear')){
+            
+    
+            // if (click === "clear"){
+            first = "";
+            second = "";
+            operator = null;
+            result = 0;
+
+            $("#first-number", "#second-number","#operator", "#result").empty()
+
+
+        }
+
+        else if ($(this).hasClass('equals')){
+
+        }
+    
+
+
+
+            
+        
+
+        // else{
+
+        //     // assign override operation
+
+        //     // clear function call
+
+        //     // equals
+        // }
+
+    })
+});
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,42 @@
+/** Z-Index: let's us positin elements on top of each other (the z-axis controls depth position); 
+	** element that has larger z index is positioned on top of the element with the smaller index
+
+**** is how you layer elements on the page. Higher the number out towrards the viewer. 
+
+**/
+
+.box-set {
+	background: #eaeaed;
+	height: 160px;
+	position: relative;
+}
+
+.box {
+	background: #2db34a;
+	border: 2px solid #ff7b29;
+	position:  absolute;
+}
+
+.box-1 {
+	top: 10px;
+	left: 10px;
+}
+
+.box-2 {
+	bottom: 10px;
+	left: 70px;
+	z-index: 3;
+}
+
+.box-3 {
+	left: 130px;
+	top: 10px;
+	z-index: 2;
+}
+
+.box-4 {
+	bottom: 10px;
+	left: 190px;
+	z-index: 1;
+	/** if you set here z index to be -2 negative, then it will go behind the box and will not be seen **/
+}

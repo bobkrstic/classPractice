@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Trigger Clicked</title>
+
+  <!-- Added link to the jQuery Library -->
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+</head>
+
+<body>
+
+  <h1>Click to Eat Sandwich</h1>
+  <h3 id="pbj">Peanut Butter Jelly</h3>
+  <h3 id="grillcheese">Grilled Cheese</h3>
+  <h3 id="roastbeef">Roast Beef</h3>
+
+  
+  <h1>Clicker pbj: <span id="counter-pbj"></span></h1>
+  <h1>Clicker grillcheese: <span id="counter-grillcheese"></span></h1>
+  <h1>Clicker roastbeef: <span id="counter-roastbeef"></span></h1>
+
+
+  <script type="text/javascript">
+
+    // This document.ready isn't necessary in this example... but is needed in cases where the HTML is complex.
+    // This code makes sure that the JavaScript doesn't get run until the HTML is finished loading
+    // It's useful to become familiar with now.
+
+    $(document).ready(function() {
+
+      // VARIABLES
+      // ====================================================================
+      // Here we create variables for tracking the number of sandwiches eaten
+      var counterPBJ = 0;
+      var counterGRILLCHEESE = 0;
+      var counterROASTBEEF = 0;
+
+
+      // ...
+
+      // FUNCTIONS
+      // ====================================================================
+      // Here we create various on "click" functions which capture the clicks
+      // Inside each click event is the code to create an alert, update the counter, then show the updated count.
+
+
+
+      // $("#pbj").on("click", function() {
+      //   counterPBJ++;
+      //   $("#counter-pbj").html(counterPBJ);
+      //   // ... we trigger an alert.
+      //   //alert("I've been clicked!" + counterPBJ);
+      // });
+
+      $("#pbj").on("click", function() {counterPBJ++; $("#counter-pbj").html(counterPBJ);} );
+
+
+
+      $("#grillcheese").on("click", function() {
+        counterGRILLCHEESE++;
+        $("#counter-grillcheese").html(counterGRILLCHEESE);
+        // ... we trigger an alert.
+        alert("I've been clicked!" + counterGRILLCHEESE);
+      });
+
+
+      $("#roastbeef").on("click", function() {
+        counterROASTBEEF++;
+        $("#counter-roastbeef").html(counterROASTBEEF);
+        // ... we trigger an alert.
+        alert("I've been clicked!" + counterROASTBEEF);
+      });
+
+
+      
+      // ...
+
+    });
+
+</script>
+
+</body>
+
+</html>
