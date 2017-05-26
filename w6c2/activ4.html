@@ -38,18 +38,39 @@
       function renderButtons() {
 
         // YOUR CODE GOES HERE
+        // deleting the movie buttons prior to adding new movie buttons
+        // this is necessary otherwise we will have repeat buttons
+        $("#movies-view").empty();
 
 
+        // looping through the array of movies
+        for (var i = 0; i < movies.length; i++ ) {
+          // then dynamicaly generating buttons for each movie in the array.
+          // this code $("<button>") is all jquesry need to create the start and end tag (<button></button>)
+          var a = $("<button>");
+          // now adding a class to that button
+          a.addClass("movie");
+          // adding a data-attribute with a value of the moive at index i
+          a.attr("data-name", movies[i]);
+          // providing the button's text with a value of the movie at index i
+          a.text(movies[i]);
+          // adding the button to the html
+          $("#movies-view").append(a);
+        }
       }
 
       // This function handles events where one button is clicked
+      // adding the buttons to the element
       $("#add-movie").on("click", function(event) {
         event.preventDefault();
         console.log("working");
-        // YOUR CODE GOES HERE
-        var movie = $("#movie-input").val();
-        $("#movies-view").append("<button>" + movie + "</button>");
-        
+        // this will grab the text from the input box
+        var movie = $("#movie-input").val().trim();
+        // $("#movies-view").append("<button>" + movie + "</button>");
+        movies.push(movie);
+
+        // calling renderButtons which handles the processing of our moviearray. 
+        renderButtons();
 
       });
 

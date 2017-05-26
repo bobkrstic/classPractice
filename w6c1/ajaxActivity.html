@@ -14,9 +14,7 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Movie Name</th>
-          <th>Year</th>
-          <th>Actors</th>
+          <th>Movie Name</th>   <th>Year</th>    <th>Actors</th>
         </tr>
       </thead>
       <tbody>
@@ -38,12 +36,12 @@
     // The below code fills in the first row of the table
     var type = "mr+nobody";
     var queryURL = "http://www.omdbapi.com/?t=" + type + "&y=&plot=short&apikey=40e9cece";
-
+    //var queryURL = "http://www.omdbapi.com/?t=" + type + "&apikey=40e9cece";
     $.ajax({
       url: queryURL,
       method: "GET"
     }).done(function(response) {
-
+      console.log(response);
       // Getting the first row of the table
       var firstRowTds = $("table")
         .children()

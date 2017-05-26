@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Bujumbura Data</title>
-</head>
+</head> 
 
 <body>
   <!-- Retrieved data will be dumped here -->
@@ -24,16 +24,24 @@
     $.ajax({
       url: queryURL,
       method: "GET"
+      // we store all of the retrieved data inside of an object called "response"
     }).done(function(response) {
 
       // Create CODE HERE to Log the queryURL
       console.log(queryURL);
       // Create CODE HERE to log the resulting object
-
+      console.log(response);
       // Create CODE HERE to transfer content to HTML
+      $(".city").html("<h1>" + response.name + " weather Details</h1>");
+      $(".wind").html("Wind Speed: " + response.wind.speed);
+      $(".humidity").html("Humidity: " + response.main.humidity);
+      $(".temp").html("Temperature (F) " + response.main.temp);
       // Create CODE HERE to calculate the temperature (converted from Kelvin)
       // Hint: To convert from Kelvin to Fahrenheit: F = (K - 273.15) * 1.80 + 32
       // Create CODE HERE to dump the temperature content into HTML
+      console.log("Wind Speed: " + response.wind.speed);
+      console.log("Humidity: " + response.main.humidity);
+      console.log("Temperature (F) " + response.main.temp);
 
     });
   </script>
