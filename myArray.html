@@ -1,0 +1,57 @@
+    
+<html>
+<head>
+	<title></title>
+	   <!-- Script -->
+    <script type="text/javascript"></script>
+</head>
+<body>
+
+<div id="someDiv">
+
+</div>
+
+
+<script>
+
+var numbers = [];
+var thirdNumber = 0;
+var swap = true;
+var randomNumber;
+
+for (var i = 0; i < 100; i++) {
+	numbers[i] = Math.floor((Math.random() * 10) + 1);
+}
+console.log(numbers);
+
+function swapArray() {
+   while(swap === true) {
+     swap = false;
+       for(var i = 0; i < numbers.length; i++) {
+           if(numbers[i] > numbers[i + 1]) {
+               thirdNumber = numbers[i];
+               numbers[i] = numbers[i+1];
+               numbers[i+1] = thirdNumber;
+               swap = true;
+             }
+           
+         }
+       
+     }
+     
+ }
+
+swapArray();
+console.log(numbers);
+
+</script>
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
+
+ 
+
+
+
+</body>
+</html>
