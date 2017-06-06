@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <title>Click Button with Firebase!</title>
+
+    <!-- Import the Firebase library -->
+    <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Text describing the button and will display the nunber of click times -->
+    <h1>Ouch! You've clicked me <span id="click-value"></span> times!</h1>
+
+    <!-- Creating a button and giving it the id for later access -->
+    <button id="click-button">Click Me!!!!</button>
+
+    <!-- Importing a Jquery library -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!-- ================================================================================== -->
+    <script>
+
+    // this is the data that will lead to your firebase library/storage
+    var config = {
+        apiKey: "AIzaSyAy7jMNgKS226O32DEh70NvB7MNo6x7xGk",
+        authDomain: "my-project-1f07b.firebaseapp.com",
+        databaseURL: "https://my-project-1f07b.firebaseio.com",
+        projectId: "my-project-1f07b",
+        storageBucket: "my-project-1f07b.appspot.com",
+        messagingSenderId: "5274076606"
+    };
+
+    // initializing the firebase library with config data
+    firebase.initializeApp(config);
+
+    // VARIABLES
+    // --------------------------------------------------------------------------------
+
+    // will referrence the database 
+    var database = firebase.database();
+    var clickCounter = 0;
+
+    // FUNCTIONS + EVENTS
+    // --------------------------------------------------------------------------------
+
+    // on click event will refer to the database and create clickCount properties in 
+    // the database object and that properties will hold the value of the counter
+    $("#click-button").on("click", function() {
+      clickCounter++;
+      database.ref().set({
+        clickCount: clickCounter
+      });
+    });
+
+    // MAIN PROCESS + INITIAL CODE
+    // --------------------------------------------------------------------------------
+
+
+    // this is to record the value of the counter when the page refreshes so 
+    // remembers the value and later continue from there. 
+    database.ref().on("value", function(snapshot) {
+      console.log(snapshot.val());
+      $("#click-value").html(snapshot.val().clickCount);
+      clickCounter = snapshot.val().clickCount;
+    }, function(errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
+
+    </script>
+
+  </body>
+
+</html>
