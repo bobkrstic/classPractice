@@ -1,0 +1,11 @@
+#imageHold, #phoneIcon, #mailIcon {
+	background-color: blue;
+	margin: 5px;
+	height: 70px;
+}
+
+#nameHold {
+	background-color: #eeeeee;
+	height: 70px;
+	margin: 5px;
+}
