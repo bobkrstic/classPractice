@@ -1,5 +1,6 @@
 // Takes in all of the command line arguments
 var inputString = process.argv;
+//console.log(inputString);
 
 // Parses the command line argument to capture the "operand" (add, subtract, multiply, etc) and the numbers
 var operand = inputString[2];
@@ -57,20 +58,30 @@ console.log(outputNum);
 function parseAlgebra(equation) {
   // Getting the index of x in the equation
   var xIndex = equation.indexOf("x");
+  console.log("Sign X is at position: " + xIndex);
   // Finding the index of the sign
   var signIndex = xIndex + 1;
+  console.log("Operand is at position: " + signIndex);
   // Getting the index of the equals sign
   var equalIndex = equation.indexOf("=");
+  console.log("Equal sign is at position: " + equalIndex);
   // Getting the numerical value for the first number to appear in the equation
   var firstNum = parseInt(equation.substring(0, xIndex));
+  console.log("First Number is: " + firstNum);
+  console.log("Lenght of Fist Number as String is: " + equation.substring(0, xIndex).length);
   // Getting the sign out of our equation
   var sign = equation[signIndex];
+  console.log("Operan sign is: " + sign);
   // Getting the numerical value of the second number in the equation by grabbing the
   // piece of the equation between the operator and equals sign
   var secondNum = parseInt(equation.substring(signIndex + 1, equalIndex));
+  console.log("Second number is: " + secondNum);
+  console.log("Lenght of 2nd Number as String is: " + equation.substring(signIndex + 1, equalIndex).length);
   // Getting the third number by grabbing the piece of the equation between the equals
   // sign and the end of the equation
   var thirdNum = parseInt(equation.substring(equalIndex + 1, equation.length));
+   console.log("Third number is: " + thirdNum);
+  console.log("Lenght of 3rd Number as String is: " + equation.substring(equalIndex + 1, equation.length).length);
   // Defining a result variable we'll use to hold our solution
   var result;
 
