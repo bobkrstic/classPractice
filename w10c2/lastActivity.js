@@ -15,6 +15,7 @@ var request = require("request");
 
 // Grab or assemble the movie name and store it in a variable called "movieName"
 var movieName = process.argv[2];
+
 // ...
 var movie3 = process.argv[3];
 

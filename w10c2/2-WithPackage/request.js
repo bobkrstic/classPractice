@@ -13,5 +13,7 @@ request("https://en.wikipedia.org/wiki/Kudos_(granola_bar)", function(error, res
 
     // Then log the body from the site!
     console.log(body);
+    console.log("-----------------");
+    console.log(response);
   }
 });

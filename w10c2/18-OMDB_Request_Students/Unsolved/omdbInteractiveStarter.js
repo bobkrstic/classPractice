@@ -34,7 +34,8 @@ request(queryUrl, function(error, response, body) {
 
  	 // Then log the Release Year for the movie
   	 // Parse the body of the site and recover just the year
-  	 console.log(JSON.parse(body));
+  	 //console.log(JSON.parse(body));
+  	 console.log("-------------------------------");
   	 console.log("Release year: " + JSON.parse(body).Year);
 
 	}
