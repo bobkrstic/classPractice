@@ -1,0 +1,16 @@
+{
+  "name": "w13c3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "a1.js",
+  "dependencies": {
+    "mysql": "^2.13.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -14,6 +14,7 @@ connection.connect(function(err) {
 	if (err) throw err;
 	console.log("connected as id " + connection.threadId);
 	afterConnection();
+  createProduct();
 });
 
 
@@ -24,30 +25,30 @@ function afterConnection() {
 	connection.query("SELECT * FROM products", function(err, res) {
 		if (err) throw err;
 		console.log(res);
+    console.log("-------------------------");
 	});
+  //createProduct();
 }
-
 
 
 
 function createProduct() {
 	console.log("Inserting a new product... \n");
 	var query = connection.query (
-
-	{
-		flavor: "Rocky Road",
-		price: 3.0,
-		quantity: 50
-	},
-	function(err, res) {
-		console.log(res.affectedRows + " product inserted!\n");
-		// call updateProduct AFTER the INSERT completes
-		updateProduct();
-	}
-
+    "INSERT INTO products SET ?",
+  	{
+  		flavor: "Rocky Road",
+  		price: 3.0,
+  		quantity: 50
+  	},
+  	function(err, res) {
+      console.log(err);
+  		console.log(res.affectedRows + " product inserted!\n");
+  		//call updateProduct AFTER the INSERT completes
+  		updateProduct();
+  	}
 	);
-
-	console.log(query.sql);
+	console.log(query.sql, 'SQLSQLSQL');
 }
 
 
@@ -64,7 +65,7 @@ function updateProduct() {
       }
     ],
     function(err, res) {
-      console.log(res.affectedRows + " products updated!\n");
+      //console.log(res.affectedRows + " products updated!\n");
       // Call deleteProduct AFTER the UPDATE completes
       deleteProduct();
     }
@@ -82,7 +83,7 @@ function deleteProduct() {
       flavor: "strawberry"
     },
     function(err, res) {
-      console.log(res.affectedRows + " products deleted!\n");
+      //console.log(res.affectedRows + " products deleted!\n");
       // Call readProducts AFTER the DELETE completes
       readProducts();
     }

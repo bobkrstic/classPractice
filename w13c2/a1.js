@@ -7,14 +7,14 @@ var connection  = mysql.createConnection({
 	// user name
 	user: "root",
 	password: "",
-	database: "programming_db"
+	database: "playlistDB"
 });
 
 connection.connect(function(err){
 	if (err) throw err;
 	console.log("connected as id " + connection.threadId);
 
-	connection.query("SELECT * FROM programming_languages", function(err, res) {
+	connection.query("SELECT * FROM songs", function(err, res) {
 		if (err) throw err;
 		console.log(res);
 	});
