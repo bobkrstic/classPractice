@@ -17,12 +17,14 @@ connection.connect(function(err){
 
 
 var start = function(){
-	inquirer.prompt({
-		name: "postOrBid",
-		type: "rawlist",
-		message: "Would you like to [POST] an auction or [BID] on an auction?",
-		choices: ["POST", "BID"]
-	}).then(function(answer){
+	inquirer.prompt([
+		{
+			name: "postOrBid",
+			type: "rawlist",
+			message: "Would you like to [POST] an auction or [BID] on an auction?",
+			choices: ["POST", "BID"]
+		}
+	]).then(function(answer){
 		if(answer.postOrBid.toUpperCase()=="POST"){
 			postAuction();
 		} else {
@@ -95,24 +97,22 @@ var bidAuction = function() {
 			for (var i = 0; i < res.length; i++){
 				if(res[i].itemname == answer.choice){
 					var choosenItem = res[i];
-					inquirer.prompt({
-						name: "bid",
-						type: "input",
-						message: "How much would you like to bid?",
-						validate: function(value){
-							if(isNaN(value)==false) {
-								return true;
-							} else {
-								return false;
+					inquirer.prompt([
+						{
+							name: "bid",
+							type: "input",
+							message: "How much would you like to bid?",
+							validate: function(value){
+								if(isNaN(value)==false) {
+									return true;
+								} else {
+									return false;
+								}
 							}
 						}
-					}).then(function(answer) {
+					]).then(function(answer) {
 						if(choosenItem.highestbid < parseInt(answer.bid)){
-							connection.query("UPDATE auctions SET ? WHERE ?", [{
-								highestbid: answer.bid
-							},{
-								id: choosenItem.id
-							}], function(err,res){
+							connection.query("UPDATE auctions SET ? WHERE ?", [ {highestbid: answer.bid }, {id: choosenItem.id} ], function(err,res) {
 								console.log("Bid successfully placed!");
 								start();
 							});

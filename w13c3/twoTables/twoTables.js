@@ -156,11 +156,13 @@ var rangeSearch = function() {
 
 
 var songSearch = function() {
-	inquirer.prompt({
+	inquirer.prompt([
+	{
 		name: "song",
 		type: "input",
 		message: "What song would you like to look for?"
-	}).then(function(answer){
+	}
+	]).then(function(answer){
 		var query = "SELECT * FROM top5000 WHERE ?";
 		connection.query(query,{song:answer.song}, function(err,res){
 			console.log(
@@ -177,14 +179,16 @@ var songSearch = function() {
 
 // now comparing two different databases, two tables
 // and trying to compare it and find top song and top artist in the same year
-// whenever is a top song on the top album then compine. 
+// whenever is a top song on the top album then combine. 
 var songAndAlbumSearch = function() {
-	inquirer.prompt({
-		// looking for the artist since that is what both tables have. 
-		name: "artist",
-		type: "input",
-		message: "What artist would you like to look for?"
-	}).then(function(answer){
+	inquirer.prompt([
+		{
+			// looking for the artist since that is what both tables have. 
+			name: "artist",
+			type: "input",
+			message: "What artist would you like to look for?"
+		}
+	]).then(function(answer){
 		var query = "SELECT TopAlbums.year, TopAlbums.position, TopAlbums.album, top5000.song, top5000.artist FROM TopAlbums ";
 		// then we are going to join them whenever these below are equal. 
 		query += "INNER JOIN top5000 ON (TopAlbums.artist = top5000.artist AND "
@@ -192,8 +196,12 @@ var songAndAlbumSearch = function() {
 		// and we are specifically searching for the artist that we input.
 		query += "WHERE (TopAlbums.artist = ? AND top5000.artist = ?) ORDER BY TopAlbums.year";
 
+
+		// you query from both tables and once you get the result
+		// you use it to display the data.
 		connection.query(query, [answer.artist, answer.artist], function(err,res){
-			console.log(res.length + "Matches found!");
+			console.log(res.length + " Matches found!");
+
 			for (var i = 0; i<res.length; i++){
 				console.log("Album Position: " + res[i].position 
 					+ "\nArtist: " + res[i].artist
@@ -201,6 +209,7 @@ var songAndAlbumSearch = function() {
 					+ "\nAlbum: " + res[i].album
 					+ "\nYear: " + res[i].year + "\n-------------------");
 			}
+
 			runSearch();
 		})
 	})
