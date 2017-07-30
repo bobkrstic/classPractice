@@ -26,6 +26,19 @@ var characters = [{
   forcePoints: 1350
 }];
 
+// Listener
+// ===========================================================
+app.listen(PORT, function() {
+  console.log("App listening on PORT " + PORT);
+});
+
+
+
+
+
+
+
+
 // Routes
 // ===========================================================
 app.get("/", function(req, res) {
@@ -42,8 +55,3 @@ app.get("/:characters", function(req, res) {
 });
 
 
-// Listener
-// ===========================================================
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
-});

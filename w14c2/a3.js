@@ -55,10 +55,12 @@ app.get("/api/:characters?", function(req, res) {
     }
 
     return res.send("No character found");
+  } else {
+      // What does this code do?
+      return res.json(characters);
   }
 
-  // What does this code do?
-  return res.json(characters);
+
 });
 
 // Listener
