@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Home Practice With Servers</title>
+	  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+ 	<h1 id="wname"> Here Name </h1>
+ 	<h2 id="wsurname">Here Last Name</h2>
+
+
+ 	<form method="POST" role="form">
+ 		<div class="form-group">
+ 			<label for="name">Name</label>
+ 			<input type="text" class="form-control" id="name">
+ 		</div>
+ 		<div class="form-group">
+ 			<label for="surname">Last Name</label>
+ 			<input type="text" class="form-control" id="surname">
+ 			<br>
+ 			<button type="submit" class="btn" id="add-btn">Add Names</button>
+ 		</div>
+ 	</form>
+
+ 	<div id="viewAll">
+ 		<h4>Here we will view results</h4>
+ 		<h5>Name: <span id="inputName"></span></h5>
+ 		<h5>Last Name: <span id="inputLastName"></span></h5>
+ 		<button class="btn" id="viewNames">View Names</button>
+ 		
+
+ 	</div>
+</body>
+
+<script type="text/javascript">
+	$("#add-btn").on("click", function(event){
+			event.preventDefault();
+			//console.log(data);
+			
+			var newMe = {
+				name: $("#name").val().trim(),
+				surname: $("#surname").val().trim()
+			};
+
+			$.post("/api/new", newMe).done(function(data) {
+				console.log(data);
+				alert("Adding character");
+			});
+	});
+
+
+	$("#viewNames").on("click", function(){
+		//alert("working");
+		$.get("/api/", function(data) {
+			console.log(data);
+			$("#viewAll").show();
+			$("#inputName").text(data.name);
+			$("#inputLastName").text(data.surname);
+		});
+
+	});
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
