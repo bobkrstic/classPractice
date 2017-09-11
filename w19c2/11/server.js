@@ -46,13 +46,18 @@ app.get("/scrape", function(req, res) {
     var $ = cheerio.load(html);
     // For each element with a "title" class
     $(".title").each(function(i, element) {
+
+
       // Save the text and href of each link enclosed in the current element
       var title = $(element).children("a").text();
+      // will go into all children of the .title, that have tag 'a' and grab the text
+      // for this below will grab the attribute "href" of all 'a' tags. 
       var link = $(element).children("a").attr("href");
 
       // If this found element had both a title and a link
       if (title && link) {
         // Insert the data in the scrapedData db
+        // here we use insert but we can also use 'save'
         db.scrapedData.insert({
           title: title,
           link: link
